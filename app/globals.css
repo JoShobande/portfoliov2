@@ -2,20 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.lora{
+  font-family: var(--font-lora)
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-} */
+.montserrat{
+  font-family: var(--font-monserrat)
+}
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+  font-family: montserrat
+}
 
-
-
+p, 
+span,
+select,
+input,
+label,
+textarea,
+ul,
+li{
+  font-family: lora
+}

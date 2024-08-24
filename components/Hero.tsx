@@ -9,7 +9,7 @@ const Hero = () => {
   
 
     return(
-        <section className={`bg-hero-bg h-[100vh] bg-cover bg-center `}>
+        <section className={`bg-hero-bg h-[100vh] bg-cover bg-center`}>
             
         </section>
     )

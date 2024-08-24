@@ -25,9 +25,9 @@ const Header = () => {
                     className={`${openMobileMenu ? 'hidden' : 'block' } md:hidden pr-[10px]`}
                     onClick={()=>setOpenMobileMenu(true)}
                 >
-                    <div className='w-[30px] h-[5px] rounded-[8px] bg-[red] mb-[1px]'/>
-                    <div className='w-[30px] h-[5px] rounded-[8px] bg-[red] mb-[1px]'/>
-                    <div className='w-[30px] h-[5px] rounded-[8px] bg-[red] mb-[1px]'/>
+                    <div className='w-[30px] h-[5px] rounded-[8px] bg-[grey] mb-[1px]'/>
+                    <div className='w-[30px] h-[5px] rounded-[8px] bg-[grey] mb-[1px]'/>
+                    <div className='w-[30px] h-[5px] rounded-[8px] bg-[grey] mb-[1px]'/>
                 </div>
 
                 <div className={`${openMobileMenu ? styles['menu-open']: styles['menu']}`}>
@@ -35,15 +35,35 @@ const Header = () => {
                         className='flex md:hidden flex-col items-end'
                         onClick={()=>setOpenMobileMenu(false)}
                     >
-                        <p className='text-[24px] mb-[20px]'>X</p>
+                        <p className='text-[24px] mb-[20px] text-[white]'>X</p>
                     </div>
-                    <ul className='md:flex justify-around gap-x-[20px]' >
-                        <li className='text-[18px]'>Home</li>
-                        <li className='text-[18px]'>About</li>
-                        <li className='text-[18px]'>Experience</li>
-                        <li className='text-[18px]'>Services</li>
-                        <li className='text-[18px]'>Projects</li>
-                        <li className='text-[18px]'>Contact</li>
+                    <ul className='md:flex justify-around gap-x-[30px]' >
+                        <div className='md:flex items-center flex-col'>
+                            <li className='text-[22px]'>Home</li>
+                            <div className={`${styles['underline']}`}/>
+                        </div>
+                        <div className='md:flex items-center flex-col'>
+                            <li className='text-[22px]'>About</li>
+                            <div className={`${styles['underline']}`}/>
+                        </div>
+                        <div className='md:flex items-center flex-col'>
+                            <li className='text-[22px]'>Resume</li>
+                            <div className={`${styles['underline']}`}/>
+                        </div>
+                        <div className='md:flex items-center flex-col'>
+                            <li className='text-[22px]'>Services</li>
+                            <div className={`${styles['underline']}`}/>
+                        </div>
+                       <div className='md:flex items-center flex-col'>
+                            <li className='text-[22px]'>Projects</li>
+                            <div className={`${styles['underline']}`}/>
+                       </div>
+                              
+                        <div className='md:flex items-center flex-col'>
+                            <li className='text-[22px]'>Contact</li>
+                            <p className={`${styles['underline']}`}/>
+                        </div>
+                             
                     </ul>
                 </div>
                 
