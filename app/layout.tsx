@@ -5,7 +5,7 @@ import "./globals.css";
 
 const MontserratFont = Montserrat({ 
   subsets: ["latin"],
-  weight: ['100', '200', '300', '500'],
+  weight: ['100', '200', '300', '500', '800'],
    variable: '--font-monserrat'
 });
 const LoraFont = Lora({ 

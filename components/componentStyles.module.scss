@@ -14,17 +14,16 @@
 
   li{
     padding-bottom: 20px;
-    color: white;
     cursor: pointer;
-   
+    color: white;
     @media(min-width: 768px){
       position: static;
       right: 0;
       background-color: transparent;
       height: auto;
       width: auto;
-      color:black;
       padding-bottom: 0px;
+      color: black
     }
     
   }

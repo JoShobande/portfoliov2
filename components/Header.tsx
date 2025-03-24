@@ -1,16 +1,27 @@
 'use client'
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from './componentStyles.module.scss'
 
 const Header = () => {
 
     const [openMobileMenu, setOpenMobileMenu] = useState(false)
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+      const handleScroll = () => {
+        const scrollY = window.scrollY;
+        setIsScrolled(scrollY > 50); // Change background when scroll is more than 50px
+      };
+  
+      window.addEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return(
-        <header>
-            <nav className={`${openMobileMenu ? '': 'items-center' } flex md:items-center justify-between lg:w-[80%] m-auto`}>
+        <header className={`sticky top-0 z-10 bg-[white] ${isScrolled ? 'shadow-xl' : ''}`}>
+            <nav className={`${openMobileMenu ? '': 'items-center' } flex md:items-center justify-between lg:w-[80%] m-auto sticky `}>
                 <div className='w-[100px] h-[100px] lg:w-[150px] lg:h-[150px] relative'>
                     <Image 
                         src={'/roundedLogo.png'}
@@ -39,7 +50,7 @@ const Header = () => {
                     </div>
                     <ul className='md:flex justify-around gap-x-[30px]' >
                         <div className='md:flex items-center flex-col'>
-                            <li className='text-[22px]'>Home</li>
+                            <li className={`text-[22px]`}>Home</li>
                             <div className={`${styles['underline']}`}/>
                         </div>
                         <div className='md:flex items-center flex-col'>
@@ -48,10 +59,6 @@ const Header = () => {
                         </div>
                         <div className='md:flex items-center flex-col'>
                             <li className='text-[22px]'>Resume</li>
-                            <div className={`${styles['underline']}`}/>
-                        </div>
-                        <div className='md:flex items-center flex-col'>
-                            <li className='text-[22px]'>Services</li>
                             <div className={`${styles['underline']}`}/>
                         </div>
                        <div className='md:flex items-center flex-col'>
