@@ -33,7 +33,7 @@ const Header = () => {
                 </div>
 
                 <div 
-                    className={`${openMobileMenu ? 'hidden' : 'block' } md:hidden pr-[10px]`}
+                    className={`z-[1000] ${openMobileMenu ? 'hidden' : 'block' } md:hidden pr-[10px]`}
                     onClick={()=>setOpenMobileMenu(true)}
                 >
                     <div className='w-[30px] h-[5px] rounded-[8px] bg-[grey] mb-[1px]'/>

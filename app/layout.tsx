@@ -1,12 +1,12 @@
 import Header from "@components/components/Header";
 import type { Metadata } from "next";
-import { Montserrat, Lora  } from "next/font/google";
+import { Poppins, Lora  } from "next/font/google";
 import "./globals.css";
 
-const MontserratFont = Montserrat({ 
+const PoppinsFont = Poppins({ 
   subsets: ["latin"],
   weight: ['100', '200', '300', '500', '800'],
-   variable: '--font-monserrat'
+   variable: '--font-poppins'
 });
 const LoraFont = Lora({ 
   subsets: ["latin"],
@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${MontserratFont.variable} ${LoraFont.variable}`}>
+      <body className={`${PoppinsFont.variable} ${LoraFont.variable}`}>
         <Header/>
         {children}
       

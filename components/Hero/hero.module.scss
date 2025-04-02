@@ -1,0 +1,30 @@
+
+  @keyframes typing {
+    from {
+      width: 0;
+    }
+    to {
+      width: 16.5ch;
+    }
+  }
+  
+  @keyframes blink-caret {
+    from, to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: #0171BC;
+    }
+  }
+  
+  .typewriter {
+    display: inline-block; /* Keeps it inline with surrounding text */
+    vertical-align: middle;     
+    overflow: hidden;               /* Hides the text until revealed */
+    white-space: nowrap;            /* Prevents wrapping to a new line */
+    border-right: 2px solid #0171BC; /* Simulates a cursor */
+    width: 0;                       /* Start with no visible text */
+    animation: typing 3s steps(20, end) forwards, 
+               blink-caret 0.75s step-end infinite;
+  }
+  
