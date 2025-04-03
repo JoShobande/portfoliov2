@@ -2,7 +2,7 @@ import styles from './hero.module.scss'
 
 const Hero = () => {
     return(
-        <section className='absolute top-0 '>
+        <section className='absolute top-0'>
            <div className='grid grid-cols-2 h-screen w-screen relative'>
                 <div className='bg-[#3e64ff] opacity-[0.1] z-[999]'/>
                 <div/>
