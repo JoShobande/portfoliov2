@@ -3,11 +3,11 @@ import Image from "next/image"
 
 const AboutMe = () => {
     return(
-        <section className="mx-auto max-w-7xl px-4 ">
+      <section className="mx-auto max-w-7xl px-4">
         {/* Container for two columns in a responsive layout */}
-        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
+        <div className="grid grid-cols-1 items-center  md:grid-cols-2">
           {/* Left column: Image */}
-          <div className="flex justify-center md:justify-end">
+          <div className="hidden lg:flex justify-center md:justify-end ">
             <div className="relative w-64 h-80 md:w-[500px] md:h-[550px]">
               {/* Next.js Image with fixed width/height or fill */}
               <Image
@@ -21,7 +21,7 @@ const AboutMe = () => {
           </div>
   
           {/* Right column: About Me text */}
-          <div className="space-y-4">
+          <div className="space-y-4 ml-[20px]">
             <h2 className="text-3xl font-bold">About Me</h2>
             <p className="text-gray-600">
               A small river named Duden flows by their place and supplies it with the necessary regalia.
