@@ -14,11 +14,12 @@ h3,
 h4,
 h5,
 h6,
-li{
+li,
+p{
   font-family: var(--font-poppins);
 }
 
-p, 
+
 span,
 select,
 input,

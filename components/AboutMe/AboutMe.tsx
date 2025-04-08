@@ -3,15 +3,15 @@ import Image from "next/image"
 
 const AboutMe = () => {
     return(
-      <section className="mx-auto max-w-7xl px-4">
+      <section className="mx-auto max-w-7xl px-4 mt-[60px] lg:mt-0 ">
         {/* Container for two columns in a responsive layout */}
-        <div className="grid grid-cols-1 items-center  md:grid-cols-2">
+        <div className="lg:grid items-center grid-cols-2">
           {/* Left column: Image */}
           <div className="hidden lg:flex justify-center md:justify-end ">
             <div className="relative w-64 h-80 md:w-[500px] md:h-[550px]">
               {/* Next.js Image with fixed width/height or fill */}
               <Image
-                src="/aboutme.jpeg" // adjust path to your image
+                src="/aboutme.jpeg"
                 alt="Profile picture"
                 fill
                 className="object-cover"
@@ -20,21 +20,17 @@ const AboutMe = () => {
             </div>
           </div>
   
-          {/* Right column: About Me text */}
-          <div className="space-y-4 ml-[20px]">
-            <h2 className="text-3xl font-bold">About Me</h2>
-            <p className="text-gray-600">
-              A small river named Duden flows by their place and supplies it with the necessary regalia.
+          <div className="space-y-4 lg:ml-[30px]">
+            <h2 className="text-[38px] lg:text-[48px] font-bold">About Me</h2>
+            <p className="text-justify text-gray-500 leading-[30px]">
+              I'm a dedicated Full-Stack Developer who builds innovative web and mobile applications that are both powerful and user-friendly.
+              I work with modern technologies such as JavaScript, TypeScript, React, Next.js, and Node.js/Express to bring creative ideas to life. 
+              I also integrate advanced AI techniques into my projects to develop smart solutions that enhance user experience and improve efficiency.
+              When I'm not coding, I enjoy sharing insights and tips through creative content that blends tech know-how with everyday lifestyle ideas—making 
+              complex topics easier for everyone to understand. I'm always driven to learn and push the boundaries of what technology can do.
+              I welcome the opportunity to work together on exciting projects or simply exchange ideas. Feel free to contact me or connect on my social media platforms 
+              if you're interested in collaboration or want to learn more!
             </p>
-            <ul className="space-y-1 text-gray-700">
-              <li><strong>Name:</strong> Ronaldo Fredrickson</li>
-              <li><strong>Date of birth:</strong> November 28, 1989</li>
-              <li><strong>Address:</strong> San Francisco CA 97897 USA</li>
-              <li><strong>Zip code:</strong> 1000</li>
-              <li><strong>Email:</strong> ronaldo@gmail.com</li>
-              <li><strong>Phone:</strong> +1-2234-5678-9-0</li>
-            </ul>
-            <p className="text-blue-500 font-semibold">120 Project complete</p>
             <button className="inline-block rounded-md bg-blue-500 px-6 py-2 text-white hover:bg-blue-600">
               Download CV
             </button>
