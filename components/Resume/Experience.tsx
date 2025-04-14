@@ -1,0 +1,14 @@
+
+
+const Experience = () => {
+    return(
+        <div>
+            <h1 className='text-[48px]'>Experience</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem ut eius dolores distinctio quasi a labore, aperiam libero magnam dolorem commodi provident voluptatem iste perferendis repudiandae corporis accusantium beatae rerum ipsa. Dolore ipsum omnis molestiae, tempore id perspiciatis recusandae? Laudantium fuga dicta quam dolore, quae, natus mollitia reiciendis doloremque delectus voluptate blanditiis sapiente adipisci labore minima facere eos. Ipsum eum eos, maxime recusandae nostrum harum expedita explicabo. Veniam repellendus consectetur, consequatur eius natus repudiandae delectus optio voluptatibus. Et aspernatur repellendus pariatur, blanditiis iusto saepe impedit assumenda provident suscipit, ullam numquam dolorum dolore dicta sunt recusandae consequatur quia, totam neque modi!</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem ut eius dolores distinctio quasi a labore, aperiam libero magnam dolorem commodi provident voluptatem iste perferendis repudiandae corporis accusantium beatae rerum ipsa. Dolore ipsum omnis molestiae, tempore id perspiciatis recusandae? Laudantium fuga dicta quam dolore, quae, natus mollitia reiciendis doloremque delectus voluptate blanditiis sapiente adipisci labore minima facere eos. Ipsum eum eos, maxime recusandae nostrum harum expedita explicabo. Veniam repellendus consectetur, consequatur eius natus repudiandae delectus optio voluptatibus. Et aspernatur repellendus pariatur, blanditiis iusto saepe impedit assumenda provident suscipit, ullam numquam dolorum dolore dicta sunt recusandae consequatur quia, totam neque modi!</p>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem ut eius dolores distinctio quasi a labore, aperiam libero magnam dolorem commodi provident voluptatem iste perferendis repudiandae corporis accusantium beatae rerum ipsa. Dolore ipsum omnis molestiae, tempore id perspiciatis recusandae? Laudantium fuga dicta quam dolore, quae, natus mollitia reiciendis doloremque delectus voluptate blanditiis sapiente adipisci labore minima facere eos. Ipsum eum eos, maxime recusandae nostrum harum expedita explicabo. Veniam repellendus consectetur, consequatur eius natus repudiandae delectus optio voluptatibus. Et aspernatur repellendus pariatur, blanditiis iusto saepe impedit assumenda provident suscipit, ullam numquam dolorum dolore dicta sunt recusandae consequatur quia, totam neque modi!</p>
+        </div>
+    )
+}
+
+export default Experience;
