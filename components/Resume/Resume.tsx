@@ -13,6 +13,11 @@ const Resume = () => {
     const educationRef = useRef<HTMLDivElement>(null);
     const experienceRef = useRef<HTMLDivElement>(null);
     const skillsRef = useRef<HTMLDivElement>(null);
+    const [isSticky, setIsSticky] = useState<boolean>(false);
+
+
+    const resumeRef = useRef<HTMLDivElement>(null);
+    const sidebarRef = useRef<HTMLDivElement>(null);
   
 
     useEffect(() => {
@@ -36,77 +41,115 @@ const Resume = () => {
         const observer = new IntersectionObserver(observerCallback, options);
     
         // If ref is set, start observing the element
-        if (educationRef.current) observer.observe(educationRef.current);
-        if (experienceRef.current) observer.observe(experienceRef.current);
-        if (skillsRef.current) observer.observe(skillsRef.current);
+        [educationRef, experienceRef, skillsRef].forEach(ref => {
+            if (ref.current) observer.observe(ref.current);
+        });
     
         // Cleanup: Unobserve elements when the component unmounts
         return () => {
-          if (educationRef.current) observer.unobserve(educationRef.current);
-          if (experienceRef.current) observer.unobserve(experienceRef.current);
-          if (skillsRef.current) observer.unobserve(skillsRef.current);
+            [educationRef, experienceRef, skillsRef].forEach(ref => {
+              if (ref.current) observer.unobserve(ref.current);
+            });
         };
     }, []);
 
+    useEffect(() => {
+        const topOffset = 150; // same as your `top-[150px]`
+        const handleScroll = () => {
+          if (!resumeRef.current || !sidebarRef.current) return;
+          const resumeRect = resumeRef.current.getBoundingClientRect();
+          const sidebarHeight = sidebarRef.current.offsetHeight;
+  
+          if (
+            resumeRect.top < topOffset &&
+            resumeRect.bottom > topOffset + sidebarHeight
+          ) {
+            setIsSticky(true);
+          } else {
+            setIsSticky(false);
+          }
+        };
+  
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll(); // initial check
+        return () => window.removeEventListener('scroll', handleScroll);
+      }, []);
+
     const handleScrollTo = (ref: React.RefObject<HTMLDivElement>) => {
-    if (ref.current) {
-      ref.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+        if (ref.current) {
+            ref.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
 
     return(
-        <section className='mt-[100px] lg:mt-[150px]' >
-            <div className='w-full lg:grid  grid-cols-[1fr,3fr] '>
-                <div className='hidden lg:block w-auto gap-[15px] sticky top-[150px]'>
-                    <div onClick={() => handleScrollTo(educationRef)}>
-                        <p 
-                            className={`font-[600] text-[20px] cursor-pointer mb-[20px] ${
-                            activeSection === 'education' ? 'text-blue-500' : 'text-black'
-                            }`}
-                        >
-                            Education
-                        </p>
-                    </div>
-                    <div onClick={() => handleScrollTo(experienceRef)}>
-                        <p 
-                            className={`font-[600] text-[20px] cursor-pointer mb-[20px] ${
+        <section className="mt-[100px] lg:mt-[150px]">
+            <div className="w-full lg:grid grid-cols-[1fr,3fr]">
+                {/* Sidebar (left column) */}
+                <div className="hidden lg:block">
+                    <nav className="sticky top-[100px] lg:top-[150px] ">
+                        <div onClick={() => handleScrollTo(educationRef)}>
+                            <div>
+                                <div
+                                    className={`${
+                                        activeSection === ' education' 
+                                        ?
+                                            'w-[10px] border border-[red]'
+                                        :
+                                            ''
+                                    }`}
+                                />
+                                <p
+                                    className={`font-[600] text-[20px] mb-[20px] cursor-pointer ${
+                                    activeSection === 'education' ? 'text-blue-500' : 'text-black'
+                                    }`}
+                                >
+                                    Education
+                                </p>
+                            </div>
+                           
+                        </div>
+                        <div onClick={() => handleScrollTo(experienceRef)}>
+                            <p
+                                className={`font-[600] text-[20px] mb-[20px] cursor-pointer ${
                                 activeSection === 'experience' ? 'text-blue-500' : 'text-black'
-                            }`}
-                        >
-                            Experience
-                        </p>
-                    </div>
-                    <div onClick={() => handleScrollTo(skillsRef)}>
-                        <p 
-                            className={`font-[600] text-[20px] cursor-pointer ${
-                            activeSection === 'skills' ? 'text-blue-500' : 'text-black'
-                            }`}
-                        >
-                            Skills
-                        </p>
-                    </div>
+                                }`}
+                            >
+                                Experience
+                            </p>
+                        </div>
+                        <div onClick={() => handleScrollTo(skillsRef)}>
+                            <p
+                                className={`font-[600] text-[20px] cursor-pointer ${
+                                activeSection === 'skills' ? 'text-blue-500' : 'text-black'
+                                }`}
+                            >
+                                Skills
+                            </p>
+                        </div>
+                    </nav>
                 </div>
-                <div >
-                    <div 
-                        className='mb-[80px]'
+
+                {/* Right-hand content (scrolls normally) */}
+                <div>
+                    <div
+                        className="mb-[80px]"
                         ref={educationRef}
                         data-section="education"
                     >
-                        <Education/>
+                        <Education />
                     </div>
-                    <div  
+                    <div
                         className="mb-[80px]"
                         ref={experienceRef}
                         data-section="experience"
                     >
-                        <Experience/>
+                        <Experience />
                     </div>
                     <div ref={skillsRef} data-section="skills">
-                        <Skills/>
-                    </div> 
+                        <Skills />
+                    </div>
                 </div>
             </div>
-           
         </section>
     )
 }
