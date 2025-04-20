@@ -86,41 +86,56 @@ const Resume = () => {
             <div className="w-full lg:grid grid-cols-[1fr,3fr]">
                 {/* Sidebar (left column) */}
                 <div className="hidden lg:block">
-                    <nav className="sticky top-[100px] lg:top-[150px] ">
-                        <div onClick={() => handleScrollTo(educationRef)}>
-                            <div>
-                                <div
-                                    className={`${
-                                        activeSection === ' education' 
-                                        ?
-                                            'w-[10px] border border-[red]'
-                                        :
-                                            ''
-                                    }`}
-                                />
-                                <p
-                                    className={`font-[600] text-[20px] mb-[20px] cursor-pointer ${
-                                    activeSection === 'education' ? 'text-blue-500' : 'text-black'
-                                    }`}
-                                >
-                                    Education
-                                </p>
-                            </div>
-                           
-                        </div>
-                        <div onClick={() => handleScrollTo(experienceRef)}>
+                    <nav className="sticky top-[100px] lg:top-[150px] space-y-4 ">
+                        <div onClick={() => handleScrollTo(educationRef)} className='flex items-center transition-all duration-300 ease-in-out'>
+                            <div
+                                className={`${
+                                    activeSection === 'education' 
+                                    ?
+                                        'w-[20px] border border-blue-500 h-0 transition-all duration-300 ease-in-out'
+                                    :
+                                        ''
+                                }`}
+                            />
                             <p
-                                className={`font-[600] text-[20px] mb-[20px] cursor-pointer ${
-                                activeSection === 'experience' ? 'text-blue-500' : 'text-black'
+                                className={`font-[600] text-[20px] cursor-pointer transition-all duration-300 ease-in-out  ${
+                                activeSection === 'education' ? 'text-blue-500 ml-[5px]' : 'text-black'
+                                }`}
+                            >
+                                Education
+                            </p>  
+                        </div>
+                        <div onClick={() => handleScrollTo(experienceRef)} className='flex items-center transition-all duration-300 ease-in-out'>
+                            <div
+                                className={`${
+                                    activeSection === 'experience' 
+                                    ?
+                                        'w-[20px] border border-blue-500 h-0 transition-all duration-300 ease-in-out'
+                                    :
+                                        ''
+                                }`}
+                            />
+                            <p
+                                className={`font-[600] text-[20px]  cursor-pointer transition-all duration-300 ease-in-out ${
+                                activeSection === 'experience' ? 'text-blue-500 ml-[5px]' : 'text-black'
                                 }`}
                             >
                                 Experience
                             </p>
                         </div>
-                        <div onClick={() => handleScrollTo(skillsRef)}>
+                        <div onClick={() => handleScrollTo(skillsRef)} className='flex items-center transition-all duration-300 ease-in-out'>
+                            <div
+                                className={`${
+                                    activeSection === 'skills' 
+                                    ?
+                                        'w-[20px] border border-blue-500 h-0 transition-all duration-300 ease-in-out'
+                                    :
+                                        ''
+                                }`}
+                            />
                             <p
-                                className={`font-[600] text-[20px] cursor-pointer ${
-                                activeSection === 'skills' ? 'text-blue-500' : 'text-black'
+                                className={`font-[600] text-[20px] cursor-pointer transition-all duration-300 ease-in-out ${
+                                activeSection === 'skills' ? 'text-blue-500 ml-[5px]' : 'text-black'
                                 }`}
                             >
                                 Skills
