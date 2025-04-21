@@ -1,0 +1,14 @@
+[
+    {
+        "duration": "2024-2025",
+        "degree": "Post Graduade Diploma (Mobile Application Development)",
+        "school":"Fanshawe College, Ontario",
+        "description": "Completed an intensive program covering the full app lifecycle—from UI/UX design and prototyping to native (Swift/Kotlin) and cross‑platform (React Native) implementation. Built and shipped multiple hands‑on projects integrating RESTful APIs, state management, and Git‑based collaboration, while applying Agile best practices for testing and deployment."
+    },
+    {
+        "duration": "2015-2020",
+        "degree": "Bachelors of Engineering in Computer Engineering",
+        "school":"Covenant University",
+        "description": "Built hardware and software skills by programming microcontrollers in C++ with Git version control, writing and testing RESTful APIs, and setting up CI/CD pipelines. Worked on an IoT capstone project, followed Agile sprints and code reviews, and honed problem‑solving through end‑to‑end software development coursework."
+    }
+]

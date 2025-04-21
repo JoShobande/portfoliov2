@@ -1,12 +1,36 @@
+import Image from "next/image"
+import education from '../../education.json'
 
 
 const Education = () => {
     return(
         <div>
-            <h1 className='text-[38px]'>Education</h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem ut eius dolores distinctio quasi a labore, aperiam libero magnam dolorem commodi provident voluptatem iste perferendis repudiandae corporis accusantium beatae rerum ipsa. Dolore ipsum omnis molestiae, tempore id perspiciatis recusandae? Laudantium fuga dicta quam dolore, quae, natus mollitia reiciendis doloremque delectus voluptate blanditiis sapiente adipisci labore minima facere eos. Ipsum eum eos, maxime recusandae nostrum harum expedita explicabo. Veniam repellendus consectetur, consequatur eius natus repudiandae delectus optio voluptatibus. Et aspernatur repellendus pariatur, blanditiis iusto saepe impedit assumenda provident suscipit, ullam numquam dolorum dolore dicta sunt recusandae consequatur quia, totam neque modi!</p>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem ut eius dolores distinctio quasi a labore, aperiam libero magnam dolorem commodi provident voluptatem iste perferendis repudiandae corporis accusantium beatae rerum ipsa. Dolore ipsum omnis molestiae, tempore id perspiciatis recusandae? Laudantium fuga dicta quam dolore, quae, natus mollitia reiciendis doloremque delectus voluptate blanditiis sapiente adipisci labore minima facere eos. Ipsum eum eos, maxime recusandae nostrum harum expedita explicabo. Veniam repellendus consectetur, consequatur eius natus repudiandae delectus optio voluptatibus. Et aspernatur repellendus pariatur, blanditiis iusto saepe impedit assumenda provident suscipit, ullam numquam dolorum dolore dicta sunt recusandae consequatur quia, totam neque modi!</p>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem ut eius dolores distinctio quasi a labore, aperiam libero magnam dolorem commodi provident voluptatem iste perferendis repudiandae corporis accusantium beatae rerum ipsa. Dolore ipsum omnis molestiae, tempore id perspiciatis recusandae? Laudantium fuga dicta quam dolore, quae, natus mollitia reiciendis doloremque delectus voluptate blanditiis sapiente adipisci labore minima facere eos. Ipsum eum eos, maxime recusandae nostrum harum expedita explicabo. Veniam repellendus consectetur, consequatur eius natus repudiandae delectus optio voluptatibus. Et aspernatur repellendus pariatur, blanditiis iusto saepe impedit assumenda provident suscipit, ullam numquam dolorum dolore dicta sunt recusandae consequatur quia, totam neque modi!</p>
+            <h1 className='text-[38px] text-blue-500 font-[600]'>Education</h1>
+            {
+                education?.map((item)=>{
+                    return(
+                        <div className='mt-[30px] border-b pb-[20px]'>
+                            <div className='flex'>
+                                <div>
+                                    <Image
+                                        src={'/education.png'}
+                                        alt={'education'}
+                                        width={150}
+                                        height={150}
+                                    />
+                                </div>
+                                <div className='ml-[10px]'>
+                                        <p className='text-[14px] text-blue-500 font-[700]'>{item.duration}</p>
+                                        <p className='text-[24px] font-[600]'>{item.degree}</p>
+                                        <p className='text-[20px] font-[500]'>{item.school}</p>
+                                        <p className='text-[#999] font-[300] mt-[10px]'>{item.description}</p>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })
+            }
+           
         </div>
     )
 }
