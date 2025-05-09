@@ -1,5 +1,6 @@
 import AboutMe from "@components/components/AboutMe/AboutMe";
 import Hero from "@components/components/Hero/Hero";
+import Portfolio from "@components/components/Portfolio/Portfolio";
 import Resume from "@components/components/Resume/Resume"
 
 export default function Home() {
@@ -12,7 +13,9 @@ export default function Home() {
         <AboutMe/>
         <Resume/>
       </div>
-      
+      <div className='w-[95%] m-auto mt-[20px]'>
+        <Portfolio/>
+      </div>
       
     </main>
   );
