@@ -1,4 +1,6 @@
 import AboutMe from "@components/components/AboutMe/AboutMe";
+import Contact from "@components/components/Contact/Contact";
+import Footer from "@components/components/Footer/Footer";
 import Hero from "@components/components/Hero/Hero";
 import Portfolio from "@components/components/Portfolio/Portfolio";
 import Resume from "@components/components/Resume/Resume"
@@ -15,6 +17,10 @@ export default function Home() {
       </div>
       <div className='w-[95%] m-auto mt-[20px]'>
         <Portfolio/>
+      </div>
+      <div className=''>
+        <Contact/>
+        <Footer/>
       </div>
       
     </main>
