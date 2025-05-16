@@ -16,7 +16,7 @@ export default function Footer() {
         <p>Copyright © 2025 | All rights reserved</p>
         <p>
           Designed by{' '}
-          <Link href="https://your-portfolio.com" target="_blank" className="text-teal-400 hover:underline">
+          <Link href="https://your-portfolio.com" target="_blank" className="text-blue-500 hover:underline">
             Josephine Shobande
           </Link>
         </p>
@@ -28,7 +28,7 @@ export default function Footer() {
         aria-label="Scroll to top"
         className="absolute right-6 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:bg-gray-100 transition"
       >
-        <ArrowUpIcon className="h-6 w-6 text-teal-600" />
+        <ArrowUpIcon className="h-6 w-6 text-blue-500" />
       </button>
     </footer>
   );

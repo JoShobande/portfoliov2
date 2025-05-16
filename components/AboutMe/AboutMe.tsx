@@ -4,12 +4,9 @@ import Image from "next/image"
 const AboutMe = () => {
     return(
       <section className=" mt-[60px] lg:mt-0 ">
-        {/* Container for two columns in a responsive layout */}
         <div className="lg:grid items-center grid-cols-2">
-          {/* Left column: Image */}
           <div className="hidden lg:flex justify-center md:justify-end ">
             <div className="relative w-full md:h-[550px]">
-              {/* Next.js Image with fixed width/height or fill */}
               <Image
                 src="/aboutme.jpeg"
                 alt="Profile picture"

@@ -12,7 +12,7 @@ const Header = () => {
     useEffect(() => {
       const handleScroll = () => {
         const scrollY = window.scrollY;
-        setIsScrolled(scrollY > 50); // Change background when scroll is more than 50px
+        setIsScrolled(scrollY > 50); 
       };
   
       window.addEventListener('scroll', handleScroll);
@@ -20,12 +20,17 @@ const Header = () => {
     }, []);
 
     return(
-        <header className={``}>
+        <header className={` ${isScrolled ? 'sticky top-0 left-0 z-[9999]': ''}`}>
             <div className='grid grid-cols-2 relative'>
-                <div className='bg-[#3e64ff] opacity-[0.1]'/>
-                <div/>
-                <nav className={`${openMobileMenu ? '': 'items-center' } flex md:items-center justify-between lg:justify-around w-[100%] absolute`}>
-                    <div className='w-[100px] h-[100px] lg:w-[150px] lg:h-[150px] relative'>
+                <nav className={
+                        `
+                        ${openMobileMenu ? '': 'items-center' } 
+                        flex md:items-center justify-between lg:justify-around w-[100%] absolute 
+                        ${isScrolled? 'bg-[white] shadow-md ' : ''}   
+                        `
+                    }
+                >
+                    <div className={`w-[100px] h-[100px] lg:w-[100px] lg:h-[100px] relative ${isScrolled ? 'w-[80px] h-[80px]': ''}`}>
                         <Image 
                             src={'/roundedLogo.png'}
                             alt='jossy_logo'
@@ -76,8 +81,6 @@ const Header = () => {
                     </div>
                 </nav>
             </div>
-          
-            
         </header>
     )
 }
