@@ -9,16 +9,48 @@ const Header = () => {
     const [openMobileMenu, setOpenMobileMenu] = useState(false)
     const [isScrolled, setIsScrolled] = useState(false);
 
-    useEffect(() => {
-      const handleScroll = () => {
-        const scrollY = window.scrollY;
-        setIsScrolled(scrollY > 50); 
-      };
-  
-      window.addEventListener('scroll', handleScroll);
-      return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    const menuItem = ['Home', 'About', 'Resume', 'Projects', 'Contact']
+    const [activeSection, setActiveSection] = useState('Home')
 
+
+    useEffect(() => {
+        const onScroll = () => setIsScrolled(window.scrollY > 50)
+        window.addEventListener('scroll', onScroll, { passive: true })
+        return () => window.removeEventListener('scroll', onScroll)
+    }, [])
+    
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                setActiveSection(entry.target.id)
+              }
+            })
+          },
+          {
+            root: null,
+            // fire when section crosses middle of viewport
+            rootMargin: '0px 0px -50% 0px',
+            threshold: 0
+          }
+        )
+    
+        document.querySelectorAll('section[id]').forEach(sec => {
+          observer.observe(sec)
+        })
+    
+        return () => {
+          document.querySelectorAll('section[id]').forEach(sec => {
+            observer.unobserve(sec)
+          })
+        }
+      }, [])
+
+      console.log(activeSection)
+    
+
+  
     return(
         <header className={` ${isScrolled ? 'sticky top-0 left-0 z-[9999]': ''}`}>
             <div className='grid grid-cols-2 relative'>
@@ -57,26 +89,24 @@ const Header = () => {
                             <p className='text-[24px] mb-[20px] text-[white]'>X</p>
                         </div>
                         <ul className='md:flex justify-around gap-x-[30px]' >
-                            <div className='md:flex items-center flex-col'>
-                                <li className={`text-[22px] font-[300]`}>Home</li>
-                                <div className={`${styles['underline']}`}/>
-                            </div>
-                            <div className='md:flex items-center flex-col'>
-                                <li className='text-[22px] font-[300]'>About</li>
-                                <div className={`${styles['underline']}`}/>
-                            </div>
-                            <div className='md:flex items-center flex-col'>
-                                <li className='text-[22px] font-[300]'>Resume</li>
-                                <div className={`${styles['underline']}`}/>
-                            </div>
-                            <div className='md:flex items-center flex-col'>
-                                    <li className='text-[22px] font-[300]'>Projects</li>
-                                    <div className={`${styles['underline']}`}/>
-                            </div>    
-                            <div className='md:flex items-center flex-col'>
-                                <li className='text-[22px] font-[300]'>Contact</li>
-                                <p className={`${styles['underline']}`}/>
-                            </div>    
+                            {
+                                menuItem.map((menu)=>{
+                                    return(
+                                        <div className='md:flex items-center flex-col'>
+                                            <li className={`text-[20px] font-[300] ${activeSection === menu ? 'text-[red]': ''}`} key={menu} >
+                                                <a 
+                                                    onClick={()=>setOpenMobileMenu(false)}
+                                                    href={`#${menu}`}
+                                                >
+                                                    {menu}
+                                                </a>
+                                                
+                                            </li>
+                                            <div className={`${styles['underline']}`}/>
+                                        </div>
+                                    )
+                                })
+                            }
                         </ul>
                     </div>
                 </nav>

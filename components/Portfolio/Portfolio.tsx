@@ -17,7 +17,7 @@ const Portfolio = () => {
 
   return(
     <main className="mx-auto max-w-7xl px-4 py-16">
-      <h1 className="mb-12 text-center text-4xl font-bold">Portfolio</h1>
+      <h1 className="mb-12 text-center text-4xl font-bold">Projects</h1>
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {PROJECTS.map(({ src, title }, i) => (
               <article

@@ -144,7 +144,6 @@ const Resume = () => {
                     </nav>
                 </div>
 
-                {/* Right-hand content (scrolls normally) */}
                 <div>
                     <div
                         className="mb-[80px]"
