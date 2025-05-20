@@ -84,7 +84,6 @@ const Resume = () => {
     return(
         <section className="mt-[100px] lg:mt-[150px]">
             <div className="w-full lg:grid grid-cols-[1fr,3fr]">
-                {/* Sidebar (left column) */}
                 <div className="hidden lg:block">
                     <nav className="sticky top-[100px] lg:top-[150px] space-y-4 ">
                         <div onClick={() => handleScrollTo(educationRef)} className='flex items-center transition-all duration-300 ease-in-out'>

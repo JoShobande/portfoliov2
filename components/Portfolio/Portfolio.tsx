@@ -25,13 +25,13 @@ const Portfolio = () => {
                   className="group relative h-72 w-full overflow-hidden rounded-md shadow cursor-pointer"
               >
                   <Image
-                  src={src}
-                  alt={title}
-                  fill
-                  className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
-                  sizes="(min-width:1024px) 33vw,
-                          (min-width:640px) 50vw,
-                          100vw"
+                    src={src}
+                    alt={title}
+                    fill
+                    className="object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                    sizes="(min-width:1024px) 33vw,
+                            (min-width:640px) 50vw,
+                            100vw"
                   />
                   <div className="absolute inset-0 flex items-center justify-center bg-black/60 opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100">
                   <h3 className="mx-4 text-center text-lg font-semibold tracking-wide text-white">
