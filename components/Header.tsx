@@ -18,7 +18,7 @@ const Header = () => {
         window.addEventListener('scroll', onScroll, { passive: true })
         return () => window.removeEventListener('scroll', onScroll)
     }, [])
-    
+
     useEffect(() => {
         const observer = new IntersectionObserver(
           (entries) => {
@@ -30,27 +30,26 @@ const Header = () => {
           },
           {
             root: null,
-            // fire when section crosses middle of viewport
-            rootMargin: '0px 0px -50% 0px',
-            threshold: 0
+            rootMargin: '-50% 0px -50% 0px',
+            threshold: 0,
           }
         )
-    
-        document.querySelectorAll('section[id]').forEach(sec => {
-          observer.observe(sec)
+      
+        menuItem.forEach(menu => {
+          const id = menu
+          const el = document.getElementById(id)
+          if (el) observer.observe(el)
         })
-    
+      
         return () => {
-          document.querySelectorAll('section[id]').forEach(sec => {
-            observer.unobserve(sec)
+          menuItem.forEach(menu => {
+            const id = menu
+            const el = document.getElementById(id)
+            if (el) observer.unobserve(el)
           })
         }
-      }, [])
-
-      console.log(activeSection)
-    
-
-  
+      }, [menuItem])
+   
     return(
         <header className={` ${isScrolled ? 'sticky top-0 left-0 z-[9999]': ''}`}>
             <div className='grid grid-cols-2 relative'>
@@ -93,16 +92,17 @@ const Header = () => {
                                 menuItem.map((menu)=>{
                                     return(
                                         <div className='md:flex items-center flex-col'>
-                                            <li className={`text-[20px] font-[300] ${activeSection === menu ? 'text-[red]': ''}`} key={menu} >
+                                            <li className={`text-[18px] font-[300] ${activeSection === menu ? styles['activeUnderline'] : ''}`} key={menu} >
                                                 <a 
                                                     onClick={()=>setOpenMobileMenu(false)}
                                                     href={`#${menu}`}
+                                                    className={` ${activeSection === menu ? `text-blue-500` : ''}`}
                                                 >
                                                     {menu}
                                                 </a>
                                                 
                                             </li>
-                                            <div className={`${styles['underline']}`}/>
+                                            {activeSection !== menu && <div className={`${styles['underline']}`}/> } 
                                         </div>
                                     )
                                 })
