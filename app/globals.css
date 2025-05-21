@@ -6,7 +6,9 @@
   font-family: var(--font-lora)
 }
 
-
+html{
+  scroll-behavior: smooth
+}
 
 body{
   font-family: var(--font-poppins);
