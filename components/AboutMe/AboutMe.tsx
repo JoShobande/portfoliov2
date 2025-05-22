@@ -28,9 +28,9 @@ const AboutMe = () => {
               I welcome the opportunity to work together on exciting projects or simply exchange ideas. Feel free to contact me or connect on my social media platforms 
               if you're interested in collaboration or want to learn more!
             </p>
-            <button className="inline-block rounded-md bg-blue-500 px-6 py-2 text-white hover:bg-blue-600">
+            {/* <button className="inline-block rounded-md bg-blue-500 px-6 py-2 text-white hover:bg-blue-600">
               Download CV
-            </button>
+            </button> */}
           </div>
         </div>
       </section>

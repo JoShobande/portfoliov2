@@ -7,9 +7,9 @@ const Education = () => {
         <div>
             <h1 className='text-[30px] lg:text-[38px] text-blue-500 font-[600]'>Education</h1>
             {
-                education?.map((item)=>{
+                education?.map((item, index)=>{
                     return(
-                        <div className='mt-[30px] border-b pb-[20px]'>
+                        <div className='mt-[30px] border-b pb-[20px]' key={index}>
                             <div className='flex'>
                                 <div>
                                     <Image

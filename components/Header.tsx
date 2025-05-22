@@ -89,9 +89,9 @@ const Header = () => {
                         </div>
                         <ul className='md:flex justify-around gap-x-[30px]' >
                             {
-                                menuItem.map((menu)=>{
+                                menuItem.map((menu, index)=>{
                                     return(
-                                        <div className='md:flex items-center flex-col'>
+                                        <div className='md:flex items-center flex-col' key={index}>
                                             <li className={`text-[18px] font-[300] ${activeSection === menu ? styles['activeUnderline'] : ''}`} key={menu} >
                                                 <a 
                                                     onClick={()=>setOpenMobileMenu(false)}
