@@ -9,40 +9,65 @@ import {
 } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 
+const handleSendEmail = (e:React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+    const form = e.currentTarget; 
+    const formData = new FormData(form);
+
+    const firstName = formData.get('firstName') as string;
+    const lastName  = formData.get('lastName')  as string;
+    const email     = formData.get('email')     as string;
+    const subject   = formData.get('subject')   as string;
+    const message   = formData.get('message')   as string;
+
+    console.log({ firstName, lastName, email, subject, message });
+
+
+}
+
 export default function ContactSection() {
   return (
     <section className="bg-blue-500 text-white py-16 px-4 lg:px-20">
       <h2 className="text-4xl font-bold mb-8">Contact</h2>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         
-        {/* Left: Form */}
-        <form className="space-y-6">
+        <form className="space-y-6" onSubmit={(e)=>handleSendEmail(e)}>
           <div className="flex flex-col md:flex-row md:space-x-6">
             <input
               type="text"
               placeholder="First Name"
               className="flex-1 bg-transparent border border-white rounded px-4 py-3 placeholder-white placeholder-opacity-80 focus:outline-none focus:ring-2 focus:ring-white"
+              required
+              name='firstName'
             />
             <input
               type="text"
               placeholder="Last Name"
               className="flex-1 bg-transparent border border-white rounded px-4 py-3 mt-4 md:mt-0 placeholder-white placeholder-opacity-80 focus:outline-none focus:ring-2 focus:ring-white"
+              name='lastName'
             />
           </div>
           <input
             type="email"
             placeholder="Email Address"
             className="w-full bg-transparent border border-white rounded px-4 py-3 placeholder-white placeholder-opacity-80 focus:outline-none focus:ring-2 focus:ring-white"
+            required
+            name='email'
           />
           <input
             type="text"
             placeholder="Subject"
             className="w-full bg-transparent border border-white rounded px-4 py-3 placeholder-white placeholder-opacity-80 focus:outline-none focus:ring-2 focus:ring-white"
+            required
+            name='subject'
           />
           <textarea
             rows={6}
             placeholder="Message"
             className="w-full bg-transparent border border-white rounded px-4 py-3 placeholder-white placeholder-opacity-80 focus:outline-none focus:ring-2 focus:ring-white"
+            required
+            name='message'
           />
           <button
             type="submit"
@@ -52,13 +77,13 @@ export default function ContactSection() {
           </button>
         </form>
 
-        {/* Right: Get In Touch */}
         <div className="space-y-6">
           <h3 className="text-3xl font-bold">Get In Touch</h3>
           <p>
             Whether you’re ready to start a new project or just have a quick question, 
             I’m here to help you achieve your goals online. Drop me a message and 
-            you’ll hear back within 24 hours with clear guidance and next steps tailored to your needs.
+            you’ll hear back within 24 hours with clear guidance and next steps tailored to your needs.<br/>
+            I am also open to remote and onsite full-time, part time and contract software engineering/development jobs
           </p>
           <ul className="space-y-4">
             <li className="flex items-center">
@@ -66,16 +91,12 @@ export default function ContactSection() {
               London ON, Canada
             </li>
             <li className="flex items-center">
-              <PhoneIcon className="h-6 w-6 text-white mr-3" />
-              (+1) 519 476 5025
-            </li>
-            <li className="flex items-center">
               <EnvelopeIcon className="h-6 w-6 text-white mr-3" />
                 shobande.josephin@gmail.com
             </li>
           </ul>
           <div className="flex space-x-4 mt-4">
-            <a href="https://linkedin.com/in/your-profile" target="_blank" rel="noreferrer">
+            <a href="https://www.linkedin.com/in/josephine-shobande" target="_blank" rel="noreferrer">
               <Image
                 src="/social/linkedin.png"
                 alt="LinkedIn"
@@ -84,7 +105,7 @@ export default function ContactSection() {
                 className="hover:opacity-80 transition"
               />
             </a>
-            <a href="https://github.com/your-profile" target="_blank" rel="noreferrer">
+            <a href="https://github.com/JoShobande" target="_blank" rel="noreferrer">
               <Image
                 src="/social/git.png"
                 alt="GitHub"
@@ -93,7 +114,7 @@ export default function ContactSection() {
                 className="hover:opacity-80 transition"
               />
             </a>
-            <a href="https://twitter.com/your-profile" target="_blank" rel="noreferrer">
+            <a href="https://x.com/Jossiieeeeee" target="_blank" rel="noreferrer">
               <Image
                 src="/social/twitter.png"
                 alt="Twitter"
@@ -102,7 +123,7 @@ export default function ContactSection() {
                 className="hover:opacity-80 transition"
               />
             </a>
-            <a href="mailto:ezekiel.web.dev@gmail.com">
+            {/* <a href="mailto:ezekiel.web.dev@gmail.com">
               <Image
                 src="/social/tik-tok.png"
                 alt="Email"
@@ -110,7 +131,7 @@ export default function ContactSection() {
                 height={24}
                 className="hover:opacity-80 transition"
               />
-            </a>
+            </a> */}
           </div>
         </div>
       </div>
