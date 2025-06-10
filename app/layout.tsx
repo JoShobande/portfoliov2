@@ -2,6 +2,7 @@ import Header from "@components/components/Header";
 import type { Metadata } from "next";
 import { Poppins, Lora  } from "next/font/google";
 import "./globals.css";
+import { Toaster } from 'sonner'
 
 const PoppinsFont = Poppins({ 
   subsets: ["latin"],
@@ -30,6 +31,18 @@ export default function RootLayout({
       <body className={`${PoppinsFont.variable} ${LoraFont.variable}`}>
         <Header/>
         {children}
+        <Toaster
+          position="top-right"
+          richColors 
+          toastOptions={{
+            duration: 4000,      
+            classNames: {                  
+              success: 'bg-green-600 text-white',
+              error:   'bg-red-600   text-white',
+              loading: 'bg-blue-600  text-white',
+            },
+          }}
+        />
       
       </body>
     </html>

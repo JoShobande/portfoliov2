@@ -1,20 +1,29 @@
 // components/ContactSection.tsx
 'use client'
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
     MapPinIcon,
     PhoneIcon,
     EnvelopeIcon
 } from '@heroicons/react/24/outline';
 import Image from 'next/image';
+import { toast } from 'sonner'
 
-const handleSendEmail = async(e:React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
 
+
+export default function ContactSection() {
+  const [loading, setLoading] = useState(false)
+
+  const handleSendEmail = async(e:React.FormEvent<HTMLFormElement>) => {
+ 
+
+    e.preventDefault();
+    setLoading(true)
+  
     const form = e.currentTarget; 
     const formData = new FormData(form);
-
+  
     const payload = {
       firstName:formData.get('firstName') as string,
       lastName :formData.get('lastName')  as string,
@@ -22,10 +31,7 @@ const handleSendEmail = async(e:React.FormEvent<HTMLFormElement>) => {
       subject  :formData.get('subject')   as string,
       message  :formData.get('message')   as string
     }
-
-  
-    console.log(payload);
-
+    
     const res = await fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -33,17 +39,17 @@ const handleSendEmail = async(e:React.FormEvent<HTMLFormElement>) => {
     })
   
     if (res.ok) {
-      alert('Message sent!')
+      toast.success('Message Sent Successfully')
       form.reset()
+      setLoading(false)
     } else {
       const json = await res.json()
-      alert('Error: ' + json.error)
+      setLoading(false)
+      toast.error('There was an error, please try again later')
     }
-
-
-}
-
-export default function ContactSection() {
+  
+  
+  }
   return (
     <section className="bg-blue-500 text-white py-16 px-4 lg:px-20">
       <h2 className="text-4xl font-bold mb-8">Contact</h2>
@@ -89,8 +95,9 @@ export default function ContactSection() {
           <button
             type="submit"
             className="w-full md:w-auto bg-white text-blue-500 font-semibold rounded px-8 py-4 hover:bg-gray-100 transition"
+            disabled={loading}
           >
-            Send Message
+            {loading ? 'Sending...' : 'Send Message'}
           </button>
         </form>
 
