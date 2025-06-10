@@ -1,31 +1,20 @@
-// pages/api/contact.ts
-import type { NextApiRequest, NextApiResponse } from 'next'
+import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
-type Data = { ok: true } | { error: string }
+export async function POST(request: Request) {
+  const { firstName, lastName, email, subject, message } = await request.json()
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' })
+  if (!firstName || !email || !subject || !message) {
+    return NextResponse.json(
+      { error: 'Missing fields' },
+      { status: 400 }
+    )
   }
 
-  const { firstName, lastName, email, subject, message } = req.body
-
-  if (
-    !firstName ||
-    !email ||
-    !subject ||
-    !message
-  ) {
-    return res.status(400).json({ error: 'Missing fields' })
-  }
-
+  // set up your SMTP transporter
   const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: Number(process.env.SMTP_PORT ?? 587),
+    host:   process.env.SMTP_HOST,
+    port:   Number(process.env.SMTP_PORT || 587),
     secure: false,
     auth: {
       user: process.env.SMTP_USER,
@@ -36,7 +25,7 @@ export default async function handler(
   try {
     await transporter.sendMail({
       from: `"${firstName} ${lastName}" <${process.env.SMTP_USER}>`,
-      to: process.env.SEND_TO_EMAIL,
+      to:   process.env.SEND_TO_EMAIL,
       subject,
       html: `
         <p><strong>From:</strong> ${firstName} ${lastName} &lt;${email}&gt;</p>
@@ -44,9 +33,13 @@ export default async function handler(
         <p>${message.replace(/\n/g, '<br>')}</p>
       `,
     })
-    return res.status(200).json({ ok: true })
+
+    return NextResponse.json({ ok: true }, { status: 200 })
   } catch (err) {
     console.error('Mail error:', err)
-    return res.status(500).json({ error: 'Failed to send email' })
+    return NextResponse.json(
+      { error: 'Failed to send email' },
+      { status: 500 }
+    )
   }
 }

@@ -9,19 +9,36 @@ import {
 } from '@heroicons/react/24/outline';
 import Image from 'next/image';
 
-const handleSendEmail = (e:React.FormEvent<HTMLFormElement>) => {
+const handleSendEmail = async(e:React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
 
     const form = e.currentTarget; 
     const formData = new FormData(form);
 
-    const firstName = formData.get('firstName') as string;
-    const lastName  = formData.get('lastName')  as string;
-    const email     = formData.get('email')     as string;
-    const subject   = formData.get('subject')   as string;
-    const message   = formData.get('message')   as string;
+    const payload = {
+      firstName:formData.get('firstName') as string,
+      lastName :formData.get('lastName')  as string,
+      email    :formData.get('email')     as string,
+      subject  :formData.get('subject')   as string,
+      message  :formData.get('message')   as string
+    }
 
-    console.log({ firstName, lastName, email, subject, message });
+  
+    console.log(payload);
+
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    })
+  
+    if (res.ok) {
+      alert('Message sent!')
+      form.reset()
+    } else {
+      const json = await res.json()
+      alert('Error: ' + json.error)
+    }
 
 
 }
