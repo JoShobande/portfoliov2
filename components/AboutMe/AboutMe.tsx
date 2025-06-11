@@ -8,7 +8,7 @@ const AboutMe = () => {
           <div className="hidden lg:flex justify-center md:justify-end ">
             <div className="relative w-full md:h-[550px]">
               <Image
-                src="/aboutme.jpeg"
+                src="/picture.jpeg"
                 alt="Profile picture"
                 fill
                 className="object-cover"
