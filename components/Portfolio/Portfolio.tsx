@@ -5,6 +5,7 @@ const Portfolio = () => {
   const PROJECTS = [
     { src: "/projects/endowd2.png", title: "Endowd Africa", url: 'https://www.endowd.africa/' },
     { src: "/projects/hmc.png",    title: "Heritage Men's Clinic", url:'https://heritagemensclinic.ng/' },
+    { src: "/projects/portfolio.png",    title: "My Portfolio", url:'https://portfolio.josephineshobande.com/' },
   ];
 
   return(
